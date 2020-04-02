@@ -1,0 +1,10 @@
+.clock {
+  margin: 10px;
+  background-color: red;
+  width: 100px;
+  text-align: center;
+}
+
+.btn {
+  margin-left: 10px;
+}
