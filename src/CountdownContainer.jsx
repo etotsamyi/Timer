@@ -78,7 +78,7 @@ export default class CountdownContainer extends React.Component {
   }
 
   percentCounting = () => {
-    const { minutes, seconds, progress, allTime } = this.state;
+    const { minutes, seconds, allTime } = this.state;
     const currentValue = (Number(minutes) * 60 + Number(seconds)) / allTime;
     this.setState({ progress: Math.round(100 - currentValue * 100) });
   }
