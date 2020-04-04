@@ -15,10 +15,10 @@ export default class TabsComponent extends React.Component {
     return (
       <Tabs defaultActiveKey="1" onChange={switchTab}>
         <TabPane tab="Timer" key="1">
-          <Countdown />
+          <Timer />
         </TabPane>
         <TabPane tab="Countdown" key="2">
-          <Timer />
+          <Countdown />
         </TabPane>
       </Tabs>
     );

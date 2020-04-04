@@ -9,7 +9,7 @@ export default class Timer extends React.PureComponent {
       sTime: 0,
       mTime: 0,
       hTime: 0,
-      buttonStatus: 0,
+      active: false,
     };
   }
 
@@ -20,9 +20,9 @@ export default class Timer extends React.PureComponent {
   }
 
   handleStart = () => {
-    const { buttonStatus } = this.state;
-    buttonStatus === 1 ? this.setState({ buttonStatus: 0 }) : this.setState({ buttonStatus: 1 });
-    if (buttonStatus === 0) {
+    const { active } = this.state;
+    this.setState({ active: !active });
+    if (!active) {
       this.timerID = setInterval(() => this.run(), 10);
     } else {
       clearInterval(this.timerID);
@@ -31,12 +31,12 @@ export default class Timer extends React.PureComponent {
 
   handleDrop = () => {
     clearInterval(this.timerID);
-    this.setState({ 
+    this.setState({
       msTime: 0,
       sTime: 0,
       mTime: 0,
       hTime: 0,
-      buttonStatus: 0,
+      active: false,
     })
   }
 
@@ -54,11 +54,11 @@ export default class Timer extends React.PureComponent {
   }
 
   render() {
-    const { msTime, sTime, mTime, hTime, buttonStatus } = this.state;
+    const { msTime, sTime, mTime, hTime, active } = this.state;
 
     return (
       <div>
-        <Button className="btn" onClick={this.handleStart}>{buttonStatus === 1 ? 'Пауза' : 'Запустить'}</Button>
+        <Button className="btn" onClick={this.handleStart}>{active ? 'Пауза' : 'Запустить'}</Button>
         <Button className="btn" onClick={this.handleDrop}>Сброс</Button>
         <div className="clock">
           {hTime < 10 ? `0${hTime}` : `${hTime}`} :
